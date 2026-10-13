@@ -1,0 +1,382 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="QuickcostServiceWSService" targetNamespace="http://cxf.quickcost.soap.chronopost.fr/" xmlns:ns1="http://cxf.apache.org/bindings/xformat" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cxf.quickcost.soap.chronopost.fr/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://cxf.quickcost.soap.chronopost.fr/" xmlns:tns="http://cxf.quickcost.soap.chronopost.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="calculateDeliveryTime" type="tns:calculateDeliveryTime" />
+<xs:element name="calculateDeliveryTimeResponse" type="tns:calculateDeliveryTimeResponse" />
+<xs:element name="calculateProducts" type="tns:calculateProducts" />
+<xs:element name="calculateProductsResponse" type="tns:calculateProductsResponse" />
+<xs:element name="calculateProductsV2" type="tns:calculateProductsV2" />
+<xs:element name="calculateProductsV2Response" type="tns:calculateProductsV2Response" />
+<xs:element name="getProducts" type="tns:getProducts" />
+<xs:element name="getProductsResponse" type="tns:getProductsResponse" />
+<xs:element name="quickCost" type="tns:quickCost" />
+<xs:element name="quickCostResponse" type="tns:quickCostResponse" />
+<xs:element name="quickCostV3" type="tns:quickCostV3" />
+<xs:element name="quickCostV3Response" type="tns:quickCostV3Response" />
+<xs:complexType name="calculateProducts">
+<xs:sequence>
+<xs:element minOccurs="0" name="accountNumber" type="xs:string" />
+<xs:element minOccurs="0" name="password" type="xs:string" />
+<xs:element minOccurs="0" name="depCountryCode" type="xs:string" />
+<xs:element minOccurs="0" name="depZipCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCountryCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrZipCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCity" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="weight" type="xs:string" />
+<xs:element minOccurs="0" name="height" type="xs:string" />
+<xs:element minOccurs="0" name="length" type="xs:string" />
+<xs:element minOccurs="0" name="width" type="xs:string" />
+<xs:element minOccurs="0" name="shippingDate" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="calculateProductsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:resultCalculateProducts" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="resultCalculateProducts">
+<xs:complexContent>
+<xs:extension base="tns:resultResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="productList" nillable="true" type="tns:product" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType abstract="true" name="resultResponse">
+<xs:sequence>
+<xs:element name="errorCode" type="xs:int" />
+<xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="product">
+<xs:complexContent>
+<xs:extension base="tns:productDesc">
+<xs:sequence>
+<xs:element name="amount" type="xs:float" />
+<xs:element name="amountTTC" type="xs:float" />
+<xs:element name="amountTVA" type="xs:float" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="productDesc">
+<xs:sequence>
+<xs:element minOccurs="0" name="productCode" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getProducts">
+<xs:sequence>
+<xs:element minOccurs="0" name="accountNumber" type="xs:string" />
+<xs:element minOccurs="0" name="password" type="xs:string" />
+<xs:element minOccurs="0" name="depCountryCode" type="xs:string" />
+<xs:element minOccurs="0" name="depZipCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCountryCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrZipCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCity" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="weight" type="xs:string" />
+<xs:element minOccurs="0" name="height" type="xs:string" />
+<xs:element minOccurs="0" name="length" type="xs:string" />
+<xs:element minOccurs="0" name="width" type="xs:string" />
+<xs:element minOccurs="0" name="shippingDate" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getProductsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:resultGetProducts" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="resultGetProducts">
+<xs:complexContent>
+<xs:extension base="tns:resultResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="productList" nillable="true" type="tns:productDesc" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="quickCostV3">
+<xs:sequence>
+<xs:element minOccurs="0" name="accountNumber" type="xs:string" />
+<xs:element minOccurs="0" name="password" type="xs:string" />
+<xs:element minOccurs="0" name="depCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCode" type="xs:string" />
+<xs:element minOccurs="0" name="weight" type="xs:string" />
+<xs:element minOccurs="0" name="productCode" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="quickCostV3Response">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:resultQuickCostV3" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="resultQuickCostV3">
+<xs:complexContent>
+<xs:extension base="tns:resultQuickCostV2">
+<xs:sequence>
+<xs:element minOccurs="0" name="cap" type="tns:cap" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="resultQuickCostV2">
+<xs:complexContent>
+<xs:extension base="tns:resultQuickCost">
+<xs:sequence>
+<xs:element minOccurs="0" name="assurance" type="tns:assurance" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="resultQuickCost">
+<xs:sequence>
+<xs:element name="amount" type="xs:float" />
+<xs:element name="amountTTC" type="xs:float" />
+<xs:element name="amountTVA" type="xs:float" />
+<xs:element name="errorCode" type="xs:int" />
+<xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="service" nillable="true" type="tns:service" />
+<xs:element minOccurs="0" name="zone" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="cap">
+<xs:sequence>
+<xs:element minOccurs="0" name="capAvion" type="xs:double" />
+<xs:element minOccurs="0" name="capRoute" type="xs:double" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="assurance">
+<xs:sequence>
+<xs:element name="plafond" type="xs:float" />
+<xs:element name="taux" type="xs:float" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="service">
+<xs:sequence>
+<xs:element name="amount" type="xs:float" />
+<xs:element name="amountTTC" type="xs:float" />
+<xs:element name="amountTVA" type="xs:float" />
+<xs:element minOccurs="0" name="codeService" type="xs:string" />
+<xs:element minOccurs="0" name="label" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="quickCost">
+<xs:sequence>
+<xs:element minOccurs="0" name="accountNumber" type="xs:string" />
+<xs:element minOccurs="0" name="password" type="xs:string" />
+<xs:element minOccurs="0" name="depCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCode" type="xs:string" />
+<xs:element minOccurs="0" name="weight" type="xs:string" />
+<xs:element minOccurs="0" name="productCode" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="quickCostResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:resultQuickCostV2" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="calculateProductsV2">
+<xs:sequence>
+<xs:element minOccurs="0" name="caller" type="xs:string" />
+<xs:element minOccurs="0" name="depCountryCode" type="xs:string" />
+<xs:element minOccurs="0" name="depZipCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCountryCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrZipCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCity" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="weight" type="xs:string" />
+<xs:element minOccurs="0" name="height" type="xs:string" />
+<xs:element minOccurs="0" name="length" type="xs:string" />
+<xs:element minOccurs="0" name="width" type="xs:string" />
+<xs:element minOccurs="0" name="shippingDate" type="xs:string" />
+<xs:element minOccurs="0" name="nationalite" type="xs:string" />
+<xs:element minOccurs="0" name="isPart" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="calculateProductsV2Response">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:resultCalculateProducts" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="calculateDeliveryTime">
+<xs:sequence>
+<xs:element minOccurs="0" name="depCountryCode" type="xs:string" />
+<xs:element minOccurs="0" name="depZipCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCountryCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrZipCode" type="xs:string" />
+<xs:element minOccurs="0" name="arrCity" type="xs:string" />
+<xs:element minOccurs="0" name="productCode" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="service" type="xs:string" />
+<xs:element minOccurs="0" name="shippingDate" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="calculateDeliveryTimeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:resultCalculateDeliveryTime" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="resultCalculateDeliveryTime">
+<xs:complexContent>
+<xs:extension base="tns:resultResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="date" type="xs:dateTime" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="calculateProducts">
+    <wsdl:part element="tns:calculateProducts" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="quickCostV3Response">
+    <wsdl:part element="tns:quickCostV3Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="quickCostResponse">
+    <wsdl:part element="tns:quickCostResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProducts">
+    <wsdl:part element="tns:getProducts" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="quickCostV3">
+    <wsdl:part element="tns:quickCostV3" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductsResponse">
+    <wsdl:part element="tns:getProductsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateProductsResponse">
+    <wsdl:part element="tns:calculateProductsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="quickCost">
+    <wsdl:part element="tns:quickCost" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateProductsV2">
+    <wsdl:part element="tns:calculateProductsV2" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateProductsV2Response">
+    <wsdl:part element="tns:calculateProductsV2Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateDeliveryTime">
+    <wsdl:part element="tns:calculateDeliveryTime" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateDeliveryTimeResponse">
+    <wsdl:part element="tns:calculateDeliveryTimeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="QuickcostServiceWS">
+    <wsdl:operation name="calculateProducts">
+      <wsdl:input message="tns:calculateProducts" name="calculateProducts">
+    </wsdl:input>
+      <wsdl:output message="tns:calculateProductsResponse" name="calculateProductsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProducts">
+      <wsdl:input message="tns:getProducts" name="getProducts">
+    </wsdl:input>
+      <wsdl:output message="tns:getProductsResponse" name="getProductsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="quickCostV3">
+      <wsdl:input message="tns:quickCostV3" name="quickCostV3">
+    </wsdl:input>
+      <wsdl:output message="tns:quickCostV3Response" name="quickCostV3Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="quickCost">
+      <wsdl:input message="tns:quickCost" name="quickCost">
+    </wsdl:input>
+      <wsdl:output message="tns:quickCostResponse" name="quickCostResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calculateProductsV2">
+      <wsdl:input message="tns:calculateProductsV2" name="calculateProductsV2">
+    </wsdl:input>
+      <wsdl:output message="tns:calculateProductsV2Response" name="calculateProductsV2Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calculateDeliveryTime">
+      <wsdl:input message="tns:calculateDeliveryTime" name="calculateDeliveryTime">
+    </wsdl:input>
+      <wsdl:output message="tns:calculateDeliveryTimeResponse" name="calculateDeliveryTimeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="QuickcostServiceWSServiceSoapBinding" type="tns:QuickcostServiceWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="calculateProducts">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="calculateProducts">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="calculateProductsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProducts">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getProducts">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getProductsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="quickCostV3">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="quickCostV3">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="quickCostV3Response">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="quickCost">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="quickCost">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="quickCostResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calculateProductsV2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="calculateProductsV2">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="calculateProductsV2Response">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calculateDeliveryTime">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="calculateDeliveryTime">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="calculateDeliveryTimeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="QuickcostServiceWSService">
+    <wsdl:port binding="tns:QuickcostServiceWSServiceSoapBinding" name="QuickcostServiceWSPort">
+      <soap:address location="https://ws.chronopost.fr/quickcost-cxf/QuickcostServiceWS" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,25 @@
+generated: '2026-10-13'
+method: probed
+generator: harvest-packages.py
+source: registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org, api.nuget.org, packagist.org, crates.io)
+ownership_rule: 'official: true only when the registry metadata (homepage, repository, author, URLs) names the provider''s
+  domain (chronopost-presse.fr, chronopost.fr, linkedin.com, security/chronopost-domain-security.yml, twitter.com) or its
+  accepted GitHub org.'
+packages:
+- name: chronopost
+  registry: npm
+  url: https://www.npmjs.com/package/chronopost
+  language: JavaScript
+  official: false
+  version: 1.0.6
+  published: '2020-11-09'
+  evidence: 'third-party: published by Lizee (lizeeco GitHub org, lizee.co maintainers); its metadata only mentions chronopost.fr
+    as the SOAP service it wraps'
+- name: chronopost
+  registry: rubygems
+  url: https://rubygems.org/gems/chronopost
+  language: Ruby
+  official: false
+  version: 0.0.0
+  published: '2021-03-23'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'

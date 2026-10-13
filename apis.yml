@@ -1,23 +1,142 @@
 aid: chronopost
 name: Chronopost
-description: 'Chronopost is a company surfaced via the API Evangelist harvest backlog (source: market-gap:shipping-logistics)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Chronopost is the French express parcel and courier carrier of the La Poste group (DPDgroup), delivering business
+  and consumer parcels across France, its overseas departments and internationally, with Pickup relay points and Shop2Shop.
+  For business customers it publishes public SOAP web services at ws.chronopost.fr, each with a live WSDL: Shipping (label/skybill
+  creation and pickup booking, 38 operations), Tracking (tracking, proof of delivery and cancellation, 9), QuickCost (pricing
+  and delivery-time quotes, 6), PointRelais (relay point and agency search, 19) and Creneau (delivery-slot appointment booking,
+  4). Calls require a Chronopost customer account number and password.'
 url: https://raw.githubusercontent.com/api-evangelist/chronopost/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:market-gap:shipping-logistics
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-13 (local-v5; was harvest)
 specificationVersion: '0.20'
 created: '2026-10-13'
 modified: '2026-10-13'
 tags:
 - Company
-apis: []
+- Shipping
+- Logistics
+- Parcel Delivery
+- Express Courier
+- SOAP
+- Tracking
+- France
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Hosts
+  url: hosts/chronopost-hosts.yml
+- type: Vendors
+  url: vendors/chronopost-vendors.yml
+- type: SDKs
+  url: packages/chronopost-packages.yml
+- type: Packages
+  url: packages/chronopost-packages.yml
+- type: DomainSecurity
+  url: security/chronopost-domain-security.yml
 - type: Website
   url: https://www.chronopost.fr
+- type: TermsOfService
+  url: https://www.chronopost.fr/fr/conditions-generales-utilisation
+- type: PrivacyPolicy
+  url: https://www.chronopost.fr/fr/politique-informatique-et-libertes
+- type: Support
+  url: https://www.chronopost.fr/fr/aide
+- type: SignUp
+  url: https://www.chronopost.fr/fr/se-creer-un-compte
+- type: Pricing
+  url: https://www.chronopost.fr/fr/tarif-envoi-colis
+- type: VulnerabilityDisclosure
+  url: https://www.chronopost.fr/fr/divulgation-de-vulnerabilites
+- type: Blog
+  url: https://www.chronopost-presse.fr/
+- type: LinkedIn
+  url: https://fr.linkedin.com/company/chronopost
+- type: X
+  url: https://twitter.com/Chronopost
+apis:
+- aid: chronopost:shipping
+  name: Chronopost Shipping Web Service
+  description: SOAP web service. Creates shipments and skybills (labels), single and multi-parcel, with reservation and ESD
+    (pickup) variants, routing and pickup booking/cancellation. 38 operations in the published WSDL.
+  humanURL: https://ws.chronopost.fr/shipping-cxf/ShippingServiceWS?wsdl
+  baseURL: https://ws.chronopost.fr/shipping-cxf/ShippingServiceWS
+  tags:
+  - SOAP
+  - Shipping
+  properties:
+  - type: WSDL
+    url: wsdl/chronopost-shipping.wsdl
+  - type: WSDL
+    name: WSDL (provider-hosted)
+    url: https://ws.chronopost.fr/shipping-cxf/ShippingServiceWS?wsdl
+- aid: chronopost:tracking
+  name: Chronopost Tracking Web Service
+  description: SOAP web service. Tracks skybills by number or sender reference, searches proof of delivery, and cancels skybills.
+    9 operations in the published WSDL.
+  humanURL: https://ws.chronopost.fr/tracking-cxf/TrackingServiceWS?wsdl
+  baseURL: https://ws.chronopost.fr/tracking-cxf/TrackingServiceWS
+  tags:
+  - SOAP
+  - Shipping
+  properties:
+  - type: WSDL
+    url: wsdl/chronopost-tracking.wsdl
+  - type: WSDL
+    name: WSDL (provider-hosted)
+    url: https://ws.chronopost.fr/tracking-cxf/TrackingServiceWS?wsdl
+- aid: chronopost:quickcost
+  name: Chronopost QuickCost Web Service
+  description: SOAP web service. Quotes shipping prices, lists products available for a route and calculates delivery times.
+    6 operations in the published WSDL.
+  humanURL: https://ws.chronopost.fr/quickcost-cxf/QuickcostServiceWS?wsdl
+  baseURL: https://ws.chronopost.fr/quickcost-cxf/QuickcostServiceWS
+  tags:
+  - SOAP
+  - Shipping
+  properties:
+  - type: WSDL
+    url: wsdl/chronopost-quickcost.wsdl
+  - type: WSDL
+    name: WSDL (provider-hosted)
+    url: https://ws.chronopost.fr/quickcost-cxf/QuickcostServiceWS?wsdl
+- aid: chronopost:pointrelais
+  name: Chronopost Point Relais Web Service
+  description: SOAP web service. Searches Chronopost relay (Pickup) points and agencies by postcode, coordinates, ID and service,
+    and delivery rounds. 19 operations in the published WSDL.
+  humanURL: https://ws.chronopost.fr/recherchebt-ws-cxf/PointRelaisServiceWS?wsdl
+  baseURL: https://ws.chronopost.fr/recherchebt-ws-cxf/PointRelaisServiceWS
+  tags:
+  - SOAP
+  - Shipping
+  properties:
+  - type: WSDL
+    url: wsdl/chronopost-pointrelais.wsdl
+  - type: WSDL
+    name: WSDL (provider-hosted)
+    url: https://ws.chronopost.fr/recherchebt-ws-cxf/PointRelaisServiceWS?wsdl
+- aid: chronopost:creneau
+  name: Chronopost Creneau Web Service
+  description: SOAP web service. Searches and confirms delivery time slots (appointment delivery) and geocodes addresses.
+    4 operations in the published WSDL.
+  humanURL: https://ws.chronopost.fr/rdv-cxf/services/CreneauServiceWS?wsdl
+  baseURL: https://ws.chronopost.fr/rdv-cxf/services/CreneauServiceWS
+  tags:
+  - SOAP
+  - Shipping
+  properties:
+  - type: WSDL
+    url: wsdl/chronopost-creneau.wsdl
+  - type: WSDL
+    name: WSDL (provider-hosted)
+    url: https://ws.chronopost.fr/rdv-cxf/services/CreneauServiceWS?wsdl
+x-enrichment:
+  date: '2026-10-13'
+  status: enriched
+  artifacts_added: 6
+  pass: local-v5
