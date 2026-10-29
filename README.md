@@ -64,5 +64,93 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Chronopost is a company surfaced via the API Evangelist harvest backlog (source: market-gap:shipping-logistics) and added to the network as a stub for full-pipeline profiling.
-- https://www.chronopost.fr
+Chronopost is the French express parcel and courier carrier of the La Poste group (DPDgroup), delivering business and consumer parcels across France, its overseas departments and internationally, with Pickup relay points and Shop2Shop. For business customers it publishes public SOAP web services at ws.chronopost.fr, each with a live WSDL: Shipping (label/skybill creation and pickup booking, 38 operations), Tracking (tracking, proof of delivery and cancellation, 9), QuickCost (pricing and delivery-time quotes, 6), PointRelais (relay point and agency search, 19) and Creneau (delivery-slot appointment booking, 4). Calls require a Chronopost customer account number and password.
+
+**Areas:** Company · Shipping · Logistics · Parcel Delivery · Express Courier · SOAP · Tracking · France
+
+## Chronopost on APIs.io
+
+Everything profiled for Chronopost is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/chronopost/](https://apis.io/providers/chronopost/)** — or go straight to one of the APIs or properties below.
+
+### APIs (5)
+
+- [Chronopost Shipping Web Service](https://apis.io/apis/chronopost/shipping/) — SOAP web service. Creates shipments and skybills (labels), single and multi-parcel, with reservation and ESD (pickup) variants, routing and pickup…
+- [Chronopost Tracking Web Service](https://apis.io/apis/chronopost/tracking/) — SOAP web service. Tracks skybills by number or sender reference, searches proof of delivery, and cancels skybills. 9 operations in the published WSDL.
+- [Chronopost QuickCost Web Service](https://apis.io/apis/chronopost/quickcost/) — SOAP web service. Quotes shipping prices, lists products available for a route and calculates delivery times. 6 operations in the published WSDL.
+- [Chronopost Point Relais Web Service](https://apis.io/apis/chronopost/pointrelais/) — SOAP web service. Searches Chronopost relay (Pickup) points and agencies by postcode, coordinates, ID and service, and delivery rounds. 19 operations in the…
+- [Chronopost Creneau Web Service](https://apis.io/apis/chronopost/creneau/) — SOAP web service. Searches and confirms delivery time slots (appointment delivery) and geocodes addresses. 4 operations in the published WSDL.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Chronopost Domain Security](https://apis.io/security/chronopost/chronopost-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.chronopost.fr)
+- [Pricing](https://www.chronopost.fr/fr/tarif-envoi-colis)
+- [Sign up](https://www.chronopost.fr/fr/se-creer-un-compte)
+- [Support](https://www.chronopost.fr/fr/aide)
+- [Blog](https://www.chronopost-presse.fr/)
+- [Terms of service](https://www.chronopost.fr/fr/conditions-generales-utilisation)
+- [Privacy policy](https://www.chronopost.fr/fr/politique-informatique-et-libertes)
+
+## API Evangelist rating
+
+**Kin Score 25.3** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.9 |
+| Contract quality | 24.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 14.3 |
+| Access clarity | 44.7 |
+
+**Agent readiness 12.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/chronopost/](https://apis.io/providers/chronopost/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Chronopost: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/chronopost/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
